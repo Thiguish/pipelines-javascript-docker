@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: thiguishpipelinesjavascriptdocker 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: thiguishpipelinesjavascriptdocker
+  template:
+    metadata:
+      labels:
+        app: thiguishpipelinesjavascriptdocker 
+    spec:
+      containers:
+        - name: thiguishpipelinesjavascriptdocker 
+          image: thiguish.azurecr.io/thiguishpipelinesjavascriptdocker
+          ports:
+          - containerPort: 8080
