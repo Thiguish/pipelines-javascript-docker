@@ -12,7 +12,7 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '40a1cc33-de49-4340-ae81-dac62716a394'
-  imageRepository: 'thiguishpipelinesjavascriptdocker'
+  imageRepository: '$(Build.SourceBranchName)'
   containerRegistry: 'thiguish.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
@@ -22,8 +22,9 @@ variables:
   vmImageName: 'ubuntu-latest'
 
   # Name of the new namespace being created to deploy the PR changes.
-  k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
-
+  # k8sNamespaceForPR: 'review-app-$(System.PullRequest.PullRequestId)'
+  k8sNamespaceForPR: '$(Build.SourceBranchName)'
+  
 stages:
 - stage: Build
   displayName: Build stage
